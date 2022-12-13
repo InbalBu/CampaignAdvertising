@@ -34,20 +34,20 @@ const Edit = () => {
         }
     }
 
-  return (
+  return (  
     <div className='form'>
       <h1>Edit this Banner</h1>
-      <input type="text" required placeholder='Banner name' onChange={handleChange} name='name' id='name' />
+      <input type="text" required placeholder='Banner name' value={campaign.name} onChange={handleChange} name='name' id='name' />
       {error ? <span>Please fill this field.</span> : null}
-      <input type="text" required placeholder='Banner image URL' onChange={handleChange} name='image' />
-      <input type="text" required placeholder='Landing page banner' onChange={handleChange} name="landingpage"/>
-        <select name="platform" type="text" required onChange={handleChange}>
+      <input type="text" required placeholder='Banner image URL' value={campaign.image} onChange={handleChange} name='image' />
+      <input type="text" required placeholder='Landing page banner' value={campaign.landingpage} onChange={handleChange} name="landingpage"/>
+        <select name="platform" type="text" value={campaign.platform} required onChange={handleChange}>
                 <option value="">Please choose an advertising platform</option>
                 <option value="Google">Google</option>
                 <option value="Taboola">Taboola</option>
                 <option value="Tiktok">TikTok</option>
         </select>
-      <button className='formBtn' onClick={handleClick}>Save</button>
+      <button className='btnForm' disabled={!campaign.name || !campaign.image || !campaign.landingpage || !campaign.platform} onClick={handleClick}>Save</button>
       {error && "Something went wrong! please try again"}
       <Link className='toHome' to="/">See all Campaigns</Link>
     </div>
